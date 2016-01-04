@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Card, List} from 'material-ui';
-
-const Assignment = (props) => (
-  <div>
-    testing {props.user}
-  </div>
-)
+import {Assignment} from './Assignment';
 
 
 export default class AssignmentList extends React.Component {
@@ -30,7 +25,7 @@ export default class AssignmentList extends React.Component {
             Assignment List
           </div>
           Assignments...
-          <Assignment user="test" />
+          <Assignment name="testUser" />
         </List>
       </Card>
     );
