@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link } from 'react-router';
-import {RaisedButton} from 'material-ui';
+import {AppBar, IconButton, FlatButton, RaisedButton} from 'material-ui';
 require('./main.scss');
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-       <h1>app</h1>
+        <AppBar
+          title={<span> Assignment Manager</span>}
+          iconElementRight={<FlatButton label="Logout" />}
+        />
         {this.props.children}
       </div>
     );

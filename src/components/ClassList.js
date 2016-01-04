@@ -15,7 +15,8 @@ export default class ClassList extends React.Component {
       <Card style={{
         flexGrow: 1,
         minWidth: '10vw',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        marginLeft: '10px'
       }} >
         <List>
           <div style={{

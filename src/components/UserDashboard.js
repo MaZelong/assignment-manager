@@ -49,10 +49,8 @@ export default class UserDashboard extends React.Component {
       <div style={{
         display: 'flex',
         flexFlow: 'row no-wrap',
-        maxWidth: 1200,
-        maxHeight: '700',
         width: '100%',
-        margin: '30px auto 30px'
+        margin: '10px auto'
       }}>
         <AssignmentList data={this.state.assignments} />
         <ClassList classes={this.state.classes} />
