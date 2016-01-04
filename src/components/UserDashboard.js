@@ -9,6 +9,12 @@ import fakeUser from '../fixtures/userData';
 export default class UserDashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      classes: [],
+      assignments: [],
+      currentClass: null,
+      currentAssignment: null
+    }
   }
 
   componentWillMount() {
@@ -17,15 +23,28 @@ export default class UserDashboard extends React.Component {
     }
   }
 
-  render() {
-    let assignmentData = _.reduce(fakeUser, (data, value, i) => {
-       let assignments = [];
-       _.forEach(value.assignments, (a) => {
-         a.class = i;
-         assignments.push(a);
+  _parseUserData(data) {
+    let classes = [];
+    let assignmentData = _.reduce(data, (dat, value, i) => {
+      classes.push(i); // get the key to pass to classlist
+      let assignments = [];
+      _.forEach(value.assignments, (a) => {
+        a.class = i;
+        assignments.push(a);
       });
-      return data.concat(assignments);
+      return dat.concat(assignments);
     } ,[]);
+
+    this.setState({
+      classes: classes,
+      assignments: assignmentData
+    });
+  }
+
+  componentWillMount() {
+    this._parseUserData(fakeUser)
+  }
+  render() {
     return (
       <div style={{
         display: 'flex',
@@ -35,8 +54,8 @@ export default class UserDashboard extends React.Component {
         width: '100%',
         margin: '30px auto 30px'
       }}>
-        <ClassList />
-        <AssignmentList data={assignmentData} />
+        <AssignmentList data={this.state.assignments} />
+        <ClassList classes={this.state.classes} />
       </div>
     );
   }

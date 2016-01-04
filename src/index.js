@@ -12,7 +12,8 @@ const history = useBasename(createHistory)({
 
 render((
     <Router history={history}>
-        <Route path={"/"} component={App} />
-      <Route path={"/users"} component={UserDashboard} />
+      <Route path={"/"} component={App} >
+        <Route path={"/users"} component={UserDashboard} />
+      </Route>
     </Router>), document.getElementById('root')
 );
