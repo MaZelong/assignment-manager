@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 import {Card, List} from 'material-ui';
 import {Assignment} from './Assignment';
-
+import fakeUser from '../fixtures/userData';
 
 export default class AssignmentList extends React.Component {
   constructor(props) {
@@ -10,9 +11,21 @@ export default class AssignmentList extends React.Component {
   }
 
   render() {
+
+    let assignmentData = _.reduce(fakeUser, (data, value, i) => {
+      value.assignments = _.map(value.assignments, (a) => {
+        a.class = i;
+        return a;
+      });
+      return data.concat(_.flatten(value.assignments));
+    } ,[]);
+
+    let assignments = _.map(assignmentData, (a, i) => {
+      return <Assignment name={a.name} key={i} />
+    })
     return (
       <Card style={{
-        flexGrow: 1,
+        flexGrow: 3,
         minWidth: '10vw',
         overflowY: 'auto'
       }} >
@@ -25,7 +38,7 @@ export default class AssignmentList extends React.Component {
             Assignment List
           </div>
           Assignments...
-          <Assignment name="testUser" />
+          {assignments}
         </List>
       </Card>
     );

@@ -22,8 +22,8 @@ export default class UserDashboard extends React.Component {
         width: '100%',
         margin: '30px auto 30px'
       }}>
-        <ClassList />
         <AssignmentList />
+        <ClassList />
       </div>
     );
   }

@@ -10,7 +10,7 @@ export default class ClassList extends React.Component {
   render() {
     return (
       <Card style={{
-        flexGrow: 2,
+        flexGrow: 1,
         minWidth: '10vw',
         overflowY: 'auto'
       }} >
