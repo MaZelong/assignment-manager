@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-export default class App extends React.Component {
+import AssignmentList from './AssignmentList';
+import ClassList from './ClassList';
+export default class UserDashboard extends React.Component {
 
   componentWillMount() {
     if (!window.localStorage._amtoken) {
@@ -14,12 +15,12 @@ export default class App extends React.Component {
         display: 'flex',
         flexFlow: 'row no-wrap',
         maxWidth: 1200,
-        maxHeight: '500',
+        maxHeight: '700',
         width: '100%',
         margin: '30px auto 30px'
       }}>
-        <div> Classes </div>
-        <div> Upcoming Assignments </div>
+        <ClassList />
+        <AssignmentList />
       </div>
     );
   }
