@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import AssignmentList from './AssignmentList';
 import ClassList from './ClassList';
 export default class UserDashboard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentWillMount() {
     if (!window.localStorage._amtoken) {

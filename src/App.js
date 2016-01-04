@@ -5,6 +5,9 @@ import {RaisedButton} from 'material-ui';
 require('./main.scss');
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   onSubmit() {
     //mock user for now

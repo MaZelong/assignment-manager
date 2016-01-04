@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import {Card, List} from 'material-ui';
 
 export default class ClassList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
