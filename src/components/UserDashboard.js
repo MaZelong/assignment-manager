@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 import AssignmentList from './AssignmentList';
 import ClassList from './ClassList';
+
+import fakeUser from '../fixtures/userData';
+
 export default class UserDashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +16,16 @@ export default class UserDashboard extends React.Component {
       window.location.href = window.location.origin;
     }
   }
+
   render() {
+    let assignmentData = _.reduce(fakeUser, (data, value, i) => {
+       let assignments = [];
+       _.forEach(value.assignments, (a) => {
+         a.class = i;
+         assignments.push(a);
+      });
+      return data.concat(assignments);
+    } ,[]);
     return (
       <div style={{
         display: 'flex',
@@ -22,8 +35,8 @@ export default class UserDashboard extends React.Component {
         width: '100%',
         margin: '30px auto 30px'
       }}>
-        <AssignmentList />
         <ClassList />
+        <AssignmentList data={assignmentData} />
       </div>
     );
   }
