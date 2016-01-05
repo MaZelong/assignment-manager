@@ -17,21 +17,26 @@ export default class DZ extends React.Component {
   }
   onDrop(files) {
    console.log(files);
+    this.sendFile(files[0]);
     this.setState({
       files: files
     })
   }
 
-  sendFile() {
-    axios.post('http://localhost:8080/api/submit', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
+  sendFile(file) {
+    console.log('about to post');
+
+    let options = {
+      headers: {
+        'Content-Type': file.type
+      }
+    };
+    axios.put('http://localhost:8080/api/submit', file, options)
+      .then(function (result) {
+        console.log(result);
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (response) {
-        console.log(response);
+      .catch(function (err) {
+        console.log(err);
       });
 
   }
@@ -43,10 +48,10 @@ export default class DZ extends React.Component {
         overflowY: 'auto',
         marginLeft: '10px'
       }}>
-        <button onClick={this.sendFile}></button>
+        <button onClick={this.sendFile.bind(this)}></button>
         <Dropzone
           ref="dropzone"
-          onDrop={this.onDrop}
+          onDrop={this.onDrop.bind(this)}
           style= {{
             width: 400,
             height: 400, // need to adaptively adjust size better
