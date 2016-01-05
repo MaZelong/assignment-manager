@@ -40,5 +40,6 @@ export default class AssignmentList extends React.Component {
   }
 }
 
-
-
+AssignmentList.propTypes = {
+  data: React.PropTypes.array
+};
