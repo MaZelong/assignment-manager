@@ -6,6 +6,7 @@ import ClassList from './ClassList';
 import {browserHistory} from "react-router";
 import fakeUser from '../fixtures/userData';
 import qs from 'qs';
+import xhr from 'xhr';
 export default class UserDashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,7 @@ export default class UserDashboard extends React.Component {
     if (!window.localStorage._amtoken) {
       window.location.href = window.location.origin;
     }
-    this._parseUserData(fakeUser)
+    this._getUserData('fakeUser');
   }
 
   filterClass(data) {
@@ -29,11 +30,20 @@ export default class UserDashboard extends React.Component {
   }
 
   selectAssignment(data) {
-    console.log(data);
     browserHistory.push('/submit?' + qs.stringify({class: data.class, assignment: data.assignmentName}));
   }
 
+  _getUserData(userid) {
+    xhr({
+      url: 'http://localhost:8080/api/assignments',
+      json: true
+    }, (err, req, body) => {
+      this._parseUserData(body)
+    });
+  }
+
   _parseUserData(data) {
+    console.log(data)
     let classes = [];
     let assignmentData = _.reduce(data, (dat, value, i) => {
       classes.push({className: i, instructor: value.instructor}); // get the key to pass to classlist
@@ -52,7 +62,6 @@ export default class UserDashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let ca = this.state.currentClass;
     let assignmentList = ca ?
       _.filter(this.state.assignments, (a) => a.class === ca ) : this.state.assignments;
@@ -65,6 +74,7 @@ export default class UserDashboard extends React.Component {
         margin: '10px auto',
         maxHeight: wh
       }}>
+        <button onClick={this._getUserData}> get some data </button>
         <AssignmentList data={assignmentList} selectAssignment={this.selectAssignment.bind(this)} />
         <ClassList classes={this.state.classes} filter={this.filterClass.bind(this)} />
       </div>

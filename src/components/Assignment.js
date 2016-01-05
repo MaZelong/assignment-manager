@@ -7,7 +7,7 @@ export const Assignment = (props) => {
   return (
       <ListItem
         primaryText={props.assignmentName}
-        secondaryText={"Due: " + props.dueDate.calendar()}
+        secondaryText={"Due: " + moment(props.dueDate).calendar()}
         rightIcon={<FileCloudUpload />}
       />
   )
@@ -15,6 +15,6 @@ export const Assignment = (props) => {
 
 Assignment.propTypes = {
   assignmentName: React.PropTypes.string.isRequired,
-  dueDate: React.PropTypes.object
+  dueDate: React.PropTypes.string.isRequired
 };
 
