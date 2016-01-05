@@ -6,18 +6,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 export const Course = (props) =>
  (
-   <Card initiallyExpanded={false}>
-     <CardHeader
-       title={props.data.name}
-       subtitle={"instructor: " + props.data.instructor}
-       actAsExpander={true}
-       showExpandableButton={true} />
-     <CardText expandable={true}>
-       Due on
-     </CardText>
-     <CardActions expandable={true}>
-       <FlatButton label="Submit Assignment"/>
-       <FlatButton label="Download Assignment Materials"/>
-     </CardActions>
-   </Card>
+   <div>
+     JSON.stringify(props)
+   </div>
   )

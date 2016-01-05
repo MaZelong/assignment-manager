@@ -5,7 +5,6 @@ import { createHistory, useBasename } from 'history'
 
 import App from './App'
 import UserDashboard from './components/UserDashboard';
-
 const history = useBasename(createHistory)({
   basename: '/'
 });
