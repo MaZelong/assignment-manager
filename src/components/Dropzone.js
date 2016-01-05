@@ -24,6 +24,7 @@ export default class DZ extends React.Component {
   }
 
   sendFile(file) {
+    console.log(window.location)
     console.log('about to post');
 
     let options = {
@@ -31,7 +32,7 @@ export default class DZ extends React.Component {
         'Content-Type': file.type
       }
     };
-    axios.put('http://localhost:8080/api/submit', file, options)
+    axios.put('http://localhost:8080/api/submit?class=phmx601&assignment=A1', file, options)
       .then(function (result) {
         console.log(result);
       })
