@@ -27,6 +27,11 @@ export default class UserDashboard extends React.Component {
   filterClass(data) {
     this.setState({currentClass: data})
   }
+
+  selectAssignment(data) {
+    console.log(data);
+  }
+
   _parseUserData(data) {
     let classes = [];
     let assignmentData = _.reduce(data, (dat, value, i) => {
@@ -46,6 +51,9 @@ export default class UserDashboard extends React.Component {
   }
 
   render() {
+    let ca = this.state.currentClass;
+    let assignmentList = ca ?
+      _.filter(this.state.assignments, (a) => a.class === ca ) : this.state.assignments;
     let wh = window.innerHeight - 100;
     return (
       <div style={{
@@ -55,7 +63,7 @@ export default class UserDashboard extends React.Component {
         margin: '10px auto',
         maxHeight: wh
       }}>
-        <AssignmentList data={this.state.assignments} />
+        <AssignmentList data={assignmentList} selectAssignment={this.selectAssignment.bind(this)} />
         <ClassList classes={this.state.classes} filter={this.filterClass.bind(this)} />
       </div>
     );

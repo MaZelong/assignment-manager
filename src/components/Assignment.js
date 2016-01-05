@@ -4,11 +4,13 @@ import moment from 'moment';
 import FileCloudUpload from 'react-material-icons/icons/file/cloud-upload';
 
 export const Assignment = (props) => {
-  return <ListItem
-    primaryText={props.assignmentName}
-    secondaryText={"Due: " + props.dueDate.calendar()}
-    rightIcon={<FileCloudUpload />}
- />
+  return (
+      <ListItem
+        primaryText={props.assignmentName}
+        secondaryText={"Due: " + props.dueDate.calendar()}
+        rightIcon={<FileCloudUpload />}
+      />
+  )
 };
 
 Assignment.propTypes = {

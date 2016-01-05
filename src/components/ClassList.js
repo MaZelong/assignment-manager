@@ -10,11 +10,13 @@ export default class ClassList extends React.Component {
 
   render() {
    let classes = _.map(this.props.classes, (c, i) => (
-     <div onClick={this.props.filter.bind(null, c)}>
+     <div
+       onClick={this.props.filter.bind(null, c.className)}
+       key={i}
+     >
        <ListItem
          primaryText={c.className}
          secondaryText={"Instructor: " + c.instructor}
-         key={i}
        />
      </div>
      ));
@@ -32,7 +34,7 @@ export default class ClassList extends React.Component {
         fontSize: 20,
         textAlign: 'center'
            }}>
-            Class List
+          <div onClick={this.props.filter.bind(null, null)}>Class List</div>
           </div>
           {classes}
         </List>

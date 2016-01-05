@@ -11,10 +11,14 @@ export default class AssignmentList extends React.Component {
 
   render() {
     let assignments = _.map(this.props.data, (a, i) => (
-      <Assignment
-        {...a}
+      <div
+        onClick={this.props.selectAssignment.bind(null, a)}
         key={i}
-      />
+      >
+        <Assignment
+          {...a}
+        />
+      </div>
       )
     );
 
