@@ -5,14 +5,14 @@ import FileCloudUpload from 'react-material-icons/icons/file/cloud-upload';
 
 export const Assignment = (props) => {
   return <ListItem
-    primaryText={props.courseName}
+    primaryText={props.assignmentName}
     secondaryText={"Due: " + props.dueDate.calendar()}
     rightIcon={<FileCloudUpload />}
  />
 };
 
 Assignment.propTypes = {
-  courseName: React.PropTypes.string.isRequired,
+  assignmentName: React.PropTypes.string.isRequired,
   dueDate: React.PropTypes.object
 };
 

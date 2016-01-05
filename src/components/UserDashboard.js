@@ -24,6 +24,9 @@ export default class UserDashboard extends React.Component {
     this._parseUserData(fakeUser)
   }
 
+  filterClass(data) {
+    this.setState({currentClass: data})
+  }
   _parseUserData(data) {
     let classes = [];
     let assignmentData = _.reduce(data, (dat, value, i) => {
@@ -53,7 +56,7 @@ export default class UserDashboard extends React.Component {
         maxHeight: wh
       }}>
         <AssignmentList data={this.state.assignments} />
-        <ClassList classes={this.state.classes} />
+        <ClassList classes={this.state.classes} filter={this.filterClass.bind(this)} />
       </div>
     );
   }
