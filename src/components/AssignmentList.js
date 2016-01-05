@@ -13,7 +13,8 @@ export default class AssignmentList extends React.Component {
 
     let assignments = _.map(this.props.data, (a, i) => (
       <Assignment
-        name={a.name}
+        data={a}
+        expanded={!!!i}
         key={i} />
       )
     );

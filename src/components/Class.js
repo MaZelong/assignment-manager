@@ -4,17 +4,16 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
-import moment from 'moment';
-export const Assignment = (props) =>
+export const Course = (props) =>
  (
-   <Card initiallyExpanded={props.expanded}>
+   <Card initiallyExpanded={false}>
      <CardHeader
        title={props.data.name}
-       subtitle={props.data.class}
+       subtitle={"instructor: " + props.data.instructor}
        actAsExpander={true}
        showExpandableButton={true} />
      <CardText expandable={true}>
-       Due on {props.data.dueDate.calendar()}
+       Due on
      </CardText>
      <CardActions expandable={true}>
        <FlatButton label="Submit Assignment"/>

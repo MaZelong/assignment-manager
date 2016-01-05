@@ -45,12 +45,14 @@ export default class UserDashboard extends React.Component {
     this._parseUserData(fakeUser)
   }
   render() {
+    let wh = window.innerHeight - 100;
     return (
       <div style={{
         display: 'flex',
         flexFlow: 'row no-wrap',
         width: '100%',
-        margin: '10px auto'
+        margin: '10px auto',
+        maxHeight: wh
       }}>
         <AssignmentList data={this.state.assignments} />
         <ClassList classes={this.state.classes} />
