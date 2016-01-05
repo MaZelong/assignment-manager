@@ -53,6 +53,7 @@
     "webpack-hot-middleware": "^2.0.0"
   },
   "dependencies": {
+    "axios": "^0.8.1",
     "classnames": "^2.2.1",
     "history": "^1.16.0",
     "karma": "^0.13.15",

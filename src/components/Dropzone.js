@@ -7,6 +7,7 @@ import _ from 'lodash';
 import {Card, List, ListItem} from 'material-ui';
 import {Assignment} from './Assignment';
 import Dropzone from 'react-dropzone';
+import axios from 'axios';
 export default class DZ extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,19 @@ export default class DZ extends React.Component {
     })
   }
 
+  sendFile() {
+    axios.post('http://localhost:8080/api/submit', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
+
+  }
   render() {
     return (
       <div style={{
@@ -29,6 +43,7 @@ export default class DZ extends React.Component {
         overflowY: 'auto',
         marginLeft: '10px'
       }}>
+        <button onClick={this.sendFile}></button>
         <Dropzone
           ref="dropzone"
           onDrop={this.onDrop}
