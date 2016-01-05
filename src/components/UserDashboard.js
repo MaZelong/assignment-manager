@@ -21,6 +21,7 @@ export default class UserDashboard extends React.Component {
     if (!window.localStorage._amtoken) {
       window.location.href = window.location.origin;
     }
+    this._parseUserData(fakeUser)
   }
 
   _parseUserData(data) {
@@ -41,9 +42,6 @@ export default class UserDashboard extends React.Component {
     });
   }
 
-  componentWillMount() {
-    this._parseUserData(fakeUser)
-  }
   render() {
     let wh = window.innerHeight - 100;
     return (
