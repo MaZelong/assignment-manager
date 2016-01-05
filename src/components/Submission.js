@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import AssignmentList from './AssignmentList';
-import ClassList from './ClassList';
 import {browserHistory} from "react-router";
 import fakeUser from '../fixtures/userData';
 import qs from 'qs';
-export default class UserDashboard extends React.Component {
+import {Card} from 'material-ui';
+import DZ from './Dropzone';
+export default class Submission extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +28,7 @@ export default class UserDashboard extends React.Component {
         margin: '10px auto',
         maxHeight: wh
       }}>
-        submission area
+        <DZ />
       </div>
     );
   }
