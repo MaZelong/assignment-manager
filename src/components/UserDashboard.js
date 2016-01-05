@@ -30,7 +30,7 @@ export default class UserDashboard extends React.Component {
   _parseUserData(data) {
     let classes = [];
     let assignmentData = _.reduce(data, (dat, value, i) => {
-      classes.push(i); // get the key to pass to classlist
+      classes.push({className: i, instructor: value.instructor}); // get the key to pass to classlist
       let assignments = [];
       _.forEach(value.assignments, (a) => {
         a.class = i;

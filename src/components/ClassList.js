@@ -12,8 +12,8 @@ export default class ClassList extends React.Component {
    let classes = _.map(this.props.classes, (c, i) => (
      <div onClick={this.props.filter.bind(null, c)}>
        <ListItem
-         primaryText={c}
-         secondaryText={i ? "instructor: Joga":"instuctor: Vijay"}
+         primaryText={c.className}
+         secondaryText={"Instructor: " + c.instructor}
          key={i}
        />
      </div>

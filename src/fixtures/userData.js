@@ -4,6 +4,7 @@
 import moment from 'moment';
 export default {
   phmx601: {
+    instructor: "Vijay",
     assignments:[
       {
         assignmentName: 'A1',
@@ -20,6 +21,7 @@ export default {
     ]
   },
   phmx602: {
+    instructor: "Joga",
     assignments:[
       {
         assignmentName: 'PP1',
