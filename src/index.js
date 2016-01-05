@@ -1,18 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom'
-import {Router, Route, Link } from 'react-router'
-import { createHistory, useBasename } from 'history'
-
-import App from './App'
+import {Router, Route, Link, browserHistory} from 'react-router'
+import App from './App';
 import UserDashboard from './components/UserDashboard';
-const history = useBasename(createHistory)({
-  basename: '/'
-});
-
+import Submission from './components/Submission';
 render((
-    <Router history={history}>
+    <Router history={browserHistory}>
       <Route path={"/"} component={App} >
         <Route path={"/assignments"} component={UserDashboard} />
+        <Route path={"/submit"} component={Submission} />
       </Route>
     </Router>), document.getElementById('root')
 );

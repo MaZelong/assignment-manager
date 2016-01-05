@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import AssignmentList from './AssignmentList';
 import ClassList from './ClassList';
-
+import {browserHistory} from "react-router";
 import fakeUser from '../fixtures/userData';
-
+import qs from 'qs';
 export default class UserDashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +30,7 @@ export default class UserDashboard extends React.Component {
 
   selectAssignment(data) {
     console.log(data);
+    browserHistory.push('/submit?' + qs.stringify({class: data.class, assignment: data.assignmentName}));
   }
 
   _parseUserData(data) {
@@ -51,6 +52,7 @@ export default class UserDashboard extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     let ca = this.state.currentClass;
     let assignmentList = ca ?
       _.filter(this.state.assignments, (a) => a.class === ca ) : this.state.assignments;
