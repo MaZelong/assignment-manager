@@ -20,7 +20,7 @@ const CardExampleWithAvatar = () => (
         overflow: 'hidden'
       }}
     >
-      <img src="https://c1.staticflickr.com/7/6096/6280601934_9661190742_z.jpg"
+      <img src="http://www.planwallpaper.com/static/images/FreeGreatPicture.com-18429-hd-color-background-wallpaper.jpg"
 
 
       />

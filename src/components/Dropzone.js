@@ -54,7 +54,7 @@ export default class DZ extends React.Component {
           ref="dropzone"
           onDrop={this.onDrop.bind(this)}
           style= {{
-            width: '40vw',
+            width: '45vw',
             height: '80vh', // need to adaptively adjust size better
             borderWidth: 2,
             borderColor: '#666',
@@ -72,10 +72,10 @@ export default class DZ extends React.Component {
             </div>
             <div>
               The following files should uploaded:
-              <ul>
-                <li> Phoenix Project </li>
-                <li> Project folder with all required Rmarkdown Files </li>
-              </ul>
+              <List>
+                <ListItem> Phoenix Project </ListItem>
+                <ListItem> Project folder with all required Rmarkdown Files </ListItem>
+              </List>
             </div>
           </div>
         </Dropzone>
