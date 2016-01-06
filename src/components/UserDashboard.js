@@ -69,12 +69,19 @@ export default class UserDashboard extends React.Component {
       <div style={{
         display: 'flex',
         flexFlow: 'row no-wrap',
-        width: '100%',
+        width: '98%',
         margin: '10px auto',
         maxHeight: wh
       }}>
-        <AssignmentList data={assignmentList} selectAssignment={this.selectAssignment.bind(this)} />
-        <ClassList classes={this.state.classes} filter={this.filterClass.bind(this)} />
+        <AssignmentList
+          data={assignmentList}
+          selectAssignment={this.selectAssignment.bind(this)}
+        />
+
+        <ClassList
+          classes={this.state.classes}
+          filter={this.filterClass.bind(this)}
+        />
       </div>
     );
   }

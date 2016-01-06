@@ -26,7 +26,8 @@ export default class ClassList extends React.Component {
         flexGrow: 1,
         minWidth: '10vw',
         overflowY: 'auto',
-        marginLeft: '10px'
+        marginLeft: '1vw',
+        marginRight: '1vw'
       }} >
         <List>
           <div style={{

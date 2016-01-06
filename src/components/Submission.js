@@ -36,7 +36,8 @@ export default class Submission extends React.Component {
           flexGrow: 1,
           minWidth: '10vw',
           overflowY: 'auto',
-          marginLeft: '10px'
+          marginLeft: '10px',
+          marginRight: '1vw'
         }}>
           <AssignmentDetails />
         </div>

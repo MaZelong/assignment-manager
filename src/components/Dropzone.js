@@ -8,6 +8,7 @@ import {Card, List, ListItem} from 'material-ui';
 import {Assignment} from './Assignment';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
+import FileCloudDone from 'react-material-icons/icons/file/cloud-done';
 export default class DZ extends React.Component {
   constructor(props) {
     super(props);
@@ -24,8 +25,6 @@ export default class DZ extends React.Component {
   }
 
   sendFile(file) {
-    console.log(window.location)
-    console.log('about to post');
     let wl = window.location;
     let options = {
       headers: {
@@ -34,7 +33,6 @@ export default class DZ extends React.Component {
     };
     axios.put('http://localhost:8080/api' + wl.pathname + wl.search + '&user=' + window.localStorage._amtoken, file, options)
       .then(function (result) {
-        console.log(result);
         console.log(result.config.data.name + " uploaded");
       })
       .catch(function (err) {
@@ -73,8 +71,21 @@ export default class DZ extends React.Component {
             <div>
               The following files should uploaded:
               <List>
-                <ListItem> Phoenix Project </ListItem>
-                <ListItem> Project folder with all required Rmarkdown Files </ListItem>
+                <ListItem
+                  leftIcon={<FileCloudDone />}
+                  primaryText="Phoenix Project"
+                  secondaryText=".phx file"
+                />
+                <ListItem
+                  leftIcon={<FileCloudDone />}
+                  primaryText="Project folder with all required Rmarkdown Files"
+                  secondaryText=".zip file"
+                />
+                <ListItem
+                  leftIcon={<FileCloudDone />}
+                  primaryText="Project Report"
+                  secondaryText=".pdf file"
+                />
               </List>
             </div>
           </div>
