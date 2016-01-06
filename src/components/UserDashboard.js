@@ -43,7 +43,6 @@ export default class UserDashboard extends React.Component {
   }
 
   _parseUserData(data) {
-    console.log(data)
     let classes = [];
     let assignmentData = _.reduce(data, (dat, value, i) => {
       classes.push({className: i, instructor: value.instructor}); // get the key to pass to classlist
@@ -74,7 +73,6 @@ export default class UserDashboard extends React.Component {
         margin: '10px auto',
         maxHeight: wh
       }}>
-        <button onClick={this._getUserData}> get some data </button>
         <AssignmentList data={assignmentList} selectAssignment={this.selectAssignment.bind(this)} />
         <ClassList classes={this.state.classes} filter={this.filterClass.bind(this)} />
       </div>

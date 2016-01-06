@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
   onSubmit() {
     //mock user for now
-    window.localStorage._amtoken =  'secrettoken';
+    window.localStorage._amtoken =  'pastoor';
 
     //on success
     if (window.localStorage._amtoken) {

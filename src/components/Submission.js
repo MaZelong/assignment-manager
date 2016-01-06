@@ -7,6 +7,7 @@ import fakeUser from '../fixtures/userData';
 import qs from 'qs';
 import {Card} from 'material-ui';
 import DZ from './Dropzone';
+import AssignmentDetails from './AssignmentDetails';
 export default class Submission extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,16 @@ export default class Submission extends React.Component {
         maxHeight: wh
       }}>
         <DZ />
+        <div style={{
+          maxWidth: '50vw',
+          height: '80vh', // need to adaptively adjust size better
+          flexGrow: 1,
+          minWidth: '10vw',
+          overflowY: 'auto',
+          marginLeft: '10px'
+        }}>
+          <AssignmentDetails />
+        </div>
       </div>
     );
   }

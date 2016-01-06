@@ -26,15 +26,16 @@ export default class DZ extends React.Component {
   sendFile(file) {
     console.log(window.location)
     console.log('about to post');
-
+    let wl = window.location;
     let options = {
       headers: {
         'Content-Type': file.type
       }
     };
-    axios.put('http://localhost:8080/api/submit?class=phmx601&assignment=A1', file, options)
+    axios.put('http://localhost:8080/api' + wl.pathname + wl.search + '&user=' + window.localStorage._amtoken, file, options)
       .then(function (result) {
         console.log(result);
+        console.log(result.config.data.name + " uploaded");
       })
       .catch(function (err) {
         console.log(err);
@@ -49,25 +50,35 @@ export default class DZ extends React.Component {
         overflowY: 'auto',
         marginLeft: '10px'
       }}>
-        <button onClick={this.sendFile.bind(this)}></button>
         <Dropzone
           ref="dropzone"
           onDrop={this.onDrop.bind(this)}
           style= {{
-            width: 400,
-            height: 400, // need to adaptively adjust size better
+            width: '40vw',
+            height: '80vh', // need to adaptively adjust size better
             borderWidth: 2,
             borderColor: '#666',
             borderStyle: 'dashed',
             borderRadius: 5
           }}
         >
-          <div> Click or Drag and Drop Files here to upload </div>
+          <div>
+            <div style={{
+              textAlign: 'center'
+            }}>
+              <h3>
+                Upload Drop Area
+              </h3>
+            </div>
+            <div>
+              The following files should uploaded:
+              <ul>
+                <li> Phoenix Project </li>
+                <li> Project folder with all required Rmarkdown Files </li>
+              </ul>
+            </div>
+          </div>
         </Dropzone>
-        {this.state.files.length > 0 ? <div>
-          <h2>Uploading {this.state.files.length} files...</h2>
-          <div>{this.state.files.map((file) => <img src={file.preview} /> )}</div>
-        </div> : null}
       </div>
     );
   }
