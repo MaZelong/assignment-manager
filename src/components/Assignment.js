@@ -6,7 +6,7 @@ import FileCloudUpload from 'react-material-icons/icons/file/cloud-upload';
 export const Assignment = (props) => {
   return (
       <ListItem
-        primaryText={props.assignmentName}
+        primaryText={props.class.toUpperCase() + " : " + props.assignmentName}
         secondaryText={"Due: " + moment(props.dueDate).calendar()}
         rightIcon={<FileCloudUpload />}
       />

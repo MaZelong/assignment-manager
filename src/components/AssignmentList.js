@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import {Card, List, ListItem} from 'material-ui';
 import {Assignment} from './Assignment';
-
+import moment from 'moment';
 export default class AssignmentList extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    let assignments = _.map(this.props.data, (a, i) => (
+    let data = _.sortBy(this.props.data, (d) => moment(d.dueDate));
+    console.log(data);
+    let assignments = _.map(data, (a, i) => (
       <div
         onClick={this.props.selectAssignment.bind(null, a)}
         key={i}
